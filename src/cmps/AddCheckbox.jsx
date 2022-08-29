@@ -19,7 +19,7 @@ class AddCheckbox extends Component {
   render() {
     const { onAddCheckbox } = this.props;
     return (
-      <div className="container jumbotron">
+      <div className="container jumbotron addBox">
         <div className="row">
           <div className="col">
             <input

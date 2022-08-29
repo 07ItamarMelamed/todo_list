@@ -21,10 +21,6 @@ class MainPage extends Component {
     });
   }
 
-  componentDidUpdate() {
-
-  }
-
   onAddCheckbox(todo) {
     const newTodo = {
       id: generateId(),
@@ -39,7 +35,12 @@ class MainPage extends Component {
   }
 
   onRemoveCheckbox(id) {
-    //nothing
+    const currList = this.state.list;
+    let listWithoutCheckbox = currList.filter((checkbox) => checkbox.id !== id);
+    this.setState((state) => {
+      state.list = listWithoutCheckbox;
+      return state;
+    });
   }
 
   render() {
