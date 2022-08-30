@@ -1,5 +1,5 @@
 import { Component } from "react";
-import CheckboxList from "../cmps/CheckboxList";
+import CheckboxList from "./CheckboxList";
 
 class AllPage extends Component {
   constructor(props) {

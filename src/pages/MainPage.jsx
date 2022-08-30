@@ -2,9 +2,9 @@ import { Component } from "react";
 import TodoList from "../data/TodoList.js";
 import AddCheckbox from "../cmps/AddCheckbox";
 import { Routes, Route } from "react-router-dom";
-import AllPage from './AllPage';
-import CompletedPage from './CompletedPage';
-import LeftPage from './LeftPage';
+import FilterAll from '../cmps/FilterAll';
+import FilterCompleted from '../cmps/FilterCompleted';
+import FilterLeft from '../cmps/FilterLeft';
 
 class MainPage extends Component {
   constructor(props) {
@@ -47,12 +47,12 @@ class MainPage extends Component {
     const { list } = this.state
     return (
       <div>
-        <AddCheckbox onAddMovie={this.onAddCheckbox} />
+        <AddCheckbox onAddCheckbox={this.onAddCheckbox} />
         <Routes>
-          <Route path="/" element={<AllPage list={list} onRemoveCheckbox={this.onRemoveCheckbox}/>} />
-          <Route path="all" element={<AllPage list={list} onRemoveCheckbox={this.onRemoveCheckbox} />} />
-          <Route path="completed" element={<CompletedPage list={list} onRemoveCheckbox={this.onRemoveCheckbox} />} />
-          <Route path="left" element={<LeftPage list={list} onRemoveCheckbox={this.onRemoveCheckbox} />} />
+          <Route path="/" element={<FilterAll list={list} onRemoveCheckbox={this.onRemoveCheckbox}/>} />
+          <Route path="all" element={<FilterAll list={list} onRemoveCheckbox={this.onRemoveCheckbox} />} />
+          <Route path="completed" element={<FilterCompleted list={list} onRemoveCheckbox={this.onRemoveCheckbox} />} />
+          <Route path="left" element={<FilterLeft list={list} onRemoveCheckbox={this.onRemoveCheckbox} />} />
         </Routes>
       </div>
     );
