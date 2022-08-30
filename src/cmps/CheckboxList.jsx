@@ -2,8 +2,13 @@ import { Component } from "react";
 import CheckboxPreview from "../cmps/CheckboxPreview";
 
 class CheckboxList extends Component {
+  constructor(props) {
+    super(props);
+    this.onRemoveCheckbox = props.onRemoveCheckbox.bind(this);
+  }
+
   render() {
-    const { list, onRemoveCheckbox } = this.props;
+    const { list } = this.props;
     return (
       <section>
         <ul>
@@ -13,7 +18,7 @@ class CheckboxList extends Component {
               id={checkbox.id}
               todo={checkbox.todo}
               completed={checkbox.completed}
-              onRemove={onRemoveCheckbox}
+              onRemove={this.onRemoveCheckbox}
             />
           ))}
         </ul>

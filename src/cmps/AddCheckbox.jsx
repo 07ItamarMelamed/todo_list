@@ -34,12 +34,13 @@ class AddCheckbox extends Component {
           <div className="col">
             <button
               type="button"
-              className="btn btn-primary"
+              className="btn btn-primary button-right"
               onClick={() => onAddCheckbox(this.state.todo)}
             >
               Add
             </button>
           </div>
+          <p></p>
         </div>
       </div>
     );

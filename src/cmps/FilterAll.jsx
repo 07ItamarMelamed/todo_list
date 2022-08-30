@@ -1,12 +1,13 @@
 import { Component } from "react";
 import CheckboxList from "./CheckboxList";
 
-class AllPage extends Component {
+class FilterAll extends Component {
   constructor(props) {
     super(props);
     this.state = {
       list: [],
     };
+    this.onRemoveCheckbox = props.onRemoveCheckbox.bind(this);
   }
 
   componentDidMount() {
@@ -18,15 +19,14 @@ class AllPage extends Component {
 
   render() {
     const { list } = this.state;
-    const { onRemoveCheckbox } = this.props;
     return (
       <div>
         <CheckboxList
         list={list}
-        onRemoveCheckbox={onRemoveCheckbox} />
+        onRemoveCheckbox={this.onRemoveCheckbox} />
       </div>
     );
   }
 }
 
-export default AllPage;
+export default FilterAll;
