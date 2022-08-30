@@ -29,18 +29,19 @@ class MainPage extends Component {
         todo: todo,
         completed: false,
       };
-      const currList = list.push(newTodo);
+      list.push(newTodo);
       this.setState((state) => {
-        state.list = currList;
+        state.list = list;
         return state;
       });
     }
   }
 
   onRemoveCheckbox(id, list) {
+    const index = list.findIndex((checkbox) => checkbox.id === id);
+    list.splice(index, 1);
     this.setState((state) => {
-      state.list = list.filter((checkbox) => checkbox.id !== id);
-      console.log(list);
+      state.list = list;
       return state;
     });
   }
