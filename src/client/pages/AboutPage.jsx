@@ -8,6 +8,7 @@ class AboutPage extends Component {
         <h1 className="whiteText"><b>Age:</b> 20</h1>
         <h1 className="whiteText"><b>Lives In:</b> Israel</h1>
         <h1 className="whiteText"><b>Occupation:</b> Attending programming course</h1>
+        <h1 className="whiteText"><b>Hobbies:</b> Playing the drums and study programming languages.</h1>
         <img src="https://upload.wikimedia.org/wikipedia/en/0/03/Walter_White_S5B.png" alt="walter white"></img>
       </div>
     );

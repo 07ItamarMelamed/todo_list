@@ -22,24 +22,39 @@ class MainPage extends Component {
     });
   }
 
-  onAddCheckbox(todo) {
-    const newTodo = {
-      id: generateId(),
-      todo: todo,
-      completed: false,
-    };
-    const currList = this.state.list;
+  onAddCheckbox(todo, list) {
+    if (todo) {
+      const newTodo = {
+        id: generateId(),
+        todo: todo,
+        completed: false,
+      };
+      const currList = list.push(newTodo);
+      this.setState((state) => {
+        state.list = currList;
+        return state;
+      });
+    }
+  }
+
+  onRemoveCheckbox(id, list) {
     this.setState((state) => {
-      state.list = [...currList, newTodo];
+      state.list = list.filter((checkbox) => checkbox.id !== id);
+      console.log(list);
       return state;
     });
   }
 
-  onRemoveCheckbox(id) {
-    const currList = this.state.list;
-    let listWithoutCheckbox = currList.filter((checkbox) => checkbox.id !== id);
+  onFlipCheck(id, list) {
+    const getCheck = list.find((checkbox) => checkbox.id === id);
+    const correctState = !getCheck.completed;
     this.setState((state) => {
-      state.list = listWithoutCheckbox;
+      state.list = list.map((checkbox) => {
+        if (checkbox.id === id) {
+          checkbox.completed = correctState;
+        }
+        return checkbox;
+      });
       return state;
     });
   }
@@ -48,18 +63,26 @@ class MainPage extends Component {
     const { list } = this.state;
     return (
       <div>
-        <AddCheckbox onAddCheckbox={this.onAddCheckbox} />
+        <AddCheckbox list={list} onAddCheckbox={this.onAddCheckbox} />
         <Routes>
           <Route
             path="/"
             element={
-              <FilterAll list={list} onRemoveCheckbox={this.onRemoveCheckbox} />
+              <FilterAll
+                list={list}
+                onFlipCheck={this.onFlipCheck}
+                onRemoveCheckbox={this.onRemoveCheckbox}
+              />
             }
           />
           <Route
             path="all"
             element={
-              <FilterAll list={list} onRemoveCheckbox={this.onRemoveCheckbox} />
+              <FilterAll
+                list={list}
+                onFlipCheck={this.onFlipCheck}
+                onRemoveCheckbox={this.onRemoveCheckbox}
+              />
             }
           />
           <Route
@@ -67,6 +90,7 @@ class MainPage extends Component {
             element={
               <FilterCompleted
                 list={list}
+                onFlipCheck={this.onFlipCheck}
                 onRemoveCheckbox={this.onRemoveCheckbox}
               />
             }
@@ -76,12 +100,13 @@ class MainPage extends Component {
             element={
               <FilterLeft
                 list={list}
+                onFlipCheck={this.onFlipCheck}
                 onRemoveCheckbox={this.onRemoveCheckbox}
               />
             }
           />
         </Routes>
-        <FilterButtons/>
+        <FilterButtons />
       </div>
     );
   }
