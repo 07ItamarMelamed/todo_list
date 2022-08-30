@@ -18,7 +18,7 @@ class AddCheckbox extends Component {
   };
 
   render() {
-    const { list } = this.props;
+    const list = this.props.list;
     const { todo } = this.state;
     return (
       <div className="container jumbotron SpaceFromNav">

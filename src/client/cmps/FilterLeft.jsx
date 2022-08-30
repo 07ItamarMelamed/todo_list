@@ -5,8 +5,8 @@ class FilterLeft extends Component {
   constructor(props) {
     super(props);
     this.state = {
-        list: []
-      }
+      list: [],
+    };
     this.onRemoveCheckbox = props.onRemoveCheckbox.bind(this);
     this.onFlipCheck = props.onFlipCheck.bind(this);
   }
@@ -22,7 +22,11 @@ class FilterLeft extends Component {
     const list = this.state.list.filter((checkbox) => !checkbox.completed);
     return (
       <div>
-        <CheckboxList list={list} onFlipCheck={this.onFlipCheck} onRemoveCheckbox={this.onRemoveCheckbox} />
+        <CheckboxList
+          list={list}
+          onFlipCheck={this.onFlipCheck}
+          onRemoveCheckbox={this.onRemoveCheckbox}
+        />
       </div>
     );
   }

@@ -5,9 +5,8 @@ import MainPage from "./client/pages/MainPage";
 import AboutPage from "./client/pages/AboutPage";
 
 function App() {
-
   const [isHomeActive, setHomeActive] = React.useState(true);
-  
+
   return (
     <div className="App">
       <div className="SiteHeader">
